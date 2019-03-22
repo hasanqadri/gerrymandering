@@ -44,8 +44,8 @@ circle {
 div.tooltip {
     position: absolute;
     text-align: center;
-    width: 60px;
-    height: 28px;
+    width: 80px;
+    height: 60px;
     padding: 2px;
     font: 12px sans-serif;
     background: lightsteelblue;
@@ -54,12 +54,66 @@ div.tooltip {
     pointer-events: none;
 }
 
-.vl {
+div.v2 {
     border-left: 2px solid gray;
     opacity: .5;
-    height: 3800px;
-    left: 27%;
+    height: 2000px;
+    left: 18%;
     position:absolute;
     margin-left: -3px;
-    top: 21%;
+    top: 26%;
 }
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    background: #fff;
+    position: absolute;
+    top: 110px;
+}
+
+.innerContainer {
+    flex: 0 1 350px;
+    flex-flow: row wrap;
+    position: relative;
+    top: 20px;
+}
+
+.innerContainer2 {
+    position: relative;
+    overflow: hidden;
+    flex: 0 1 1000px;
+    flex-flow: column wrap;
+    top: 20px;
+}
+
+/**District Styling**/
+
+path {
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.districts {
+    fill: #bbb;
+}
+
+.districts :hover {
+    fill: orange;
+}
+
+.district-boundaries {
+    pointer-events: none;
+    fill: none;
+    stroke: #fff;
+    stroke-width: .5px;
+}
+
+.state-boundaries {
+    pointer-events: none;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+/**District Styling**/

@@ -1,0 +1,8 @@
+
+kjavascript:S2814{"CRename "f" as this name is already used in declaration at line 120.(Ö˜÷‘ûÿÿÿÿ8ºüÄ—™-
+djavascript:S1854?"<Remove this useless assignment to local variable "currState"(‚å³›þÿÿÿÿ8©¥ãÞ-
+Xjavascript:S1656ó"/Remove or correct this useless self-assignment.(ÁûÂøÿÿÿÿ8ºüÄ—™-
+Rjavascript:S1854!"6Remove this useless assignment to local variable "svg"(¤˜ýÙ
+Yjavascript:UnusedVariable!"4Remove the declaration of the unused 'svg' variable.(¤˜ýÙ
+’javascript:S4165…"iReview this useless assignment: "totalHeight" already holds the assigned value along all execution paths.(î­ýØûÿÿÿÿ8ºüÄ—™-
+f'javascript:FunctionDefinitionInsideLoopw"'Define this function outside of a loop.(¾ä´úúÿÿÿÿ8ºüÄ—™-
