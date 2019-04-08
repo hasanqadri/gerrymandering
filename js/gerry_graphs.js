@@ -19,6 +19,7 @@ var hData = null;
 var raceData = null;
 var circleState = null;
 var stateData = null;
+var picData = null;
 
 // Define the div for the tooltip
 var div = d3.select("body").append("div")
@@ -41,6 +42,7 @@ function gerry_graphs() {
         .defer(d3v4.csv, './Data/house_results.csv')
         .defer(d3v4.json, './Data/file_paths.json')
         .defer(d3v4.json, './Data/us-congress-113.json')
+        .defer(d3v4.json, '/Data/state-pics.json')
         .awaitAll(ready);
 
     function ready(error, results) {
@@ -48,6 +50,7 @@ function gerry_graphs() {
         hData = results[1]
         raceData = results[2]
         stateData = results[3]
+        picData = results[4]
         var districts = createInitialDistrictHash(hData);
         createInitialGrid(data, districts, raceData);
     }
@@ -92,7 +95,7 @@ function createInitialGrid(data, districts, raceData) {
 
         //X Scale
         //var x_axis = d3v4.scaleBand().rangeRoundBands([0, 150]);
-        var datas = ["-100", "-75", "50", "75", "100"];
+        var datas = ["-50", "-25", "0", "25", "50"];
 
         var xScale = d3v4.scaleBand()
             .domain(datas.map(function(entry){
@@ -136,19 +139,20 @@ function createInitialGrid(data, districts, raceData) {
                     return 30 + 10 * parseInt(i/5)
                 })
                 .on("mouseover", function(d) {
-                    div.transition()
-                        .duration(200)
-                        .style("opacity", .9)
-                    div.html(d[1] + ' <br> ' + raceData[d[0]][d[1]]['Dem Candidate'] + '<br>' + raceData[d[0]][d[1]]['Dem Total'])
-                        .style("left", (d3v4.event.pageX + 5) + "px")
-                        .style("top", (d3v4.event.pageY - 28) + "px")
                     createDistractMap(d[0], d[1]);
-
+                    $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Dem Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Dem Total']);
+                    var url = getPic(d[1], raceData[d[0]][d[1]]['Dem Candidate'])
+                    if (url != null) {
+                        console.log(url)
+                        $( "#image-id" ).attr('src', url)
+                    } else {
+                        $( "#image-id" ).attr('src', 'http://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png')
+                    }
                 })
                 .on("mouseout", function(d) {
                     div.transition()
                         .duration(100)
-                        .style("opacity", 0);
+                        .style("opacity", 0)
                 });
 
             //x_axis
@@ -177,14 +181,15 @@ function createInitialGrid(data, districts, raceData) {
                     return 30 + 10 * (parseInt(i/5))
                 })
                 .on("mouseover", function(d) {
-                    div.transition()
-                        .duration(200)
-                        .style("opacity", .9);
-                    div.html(d[1] + ' <br> ' + raceData[d[0]][d[1]]['Gop Candidate'] + '<br>' + raceData[d[0]][d[1]]['Gop Total'])
-                        .style("left", (d3v4.event.pageX + 5) + "px")
-                        .style("top", (d3v4.event.pageY - 28) + "px");
                     createDistractMap(d[0], d[1]);
-
+                    $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Gop Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Gop Total']);
+                    var url = getPic(d[1], raceData[d[0]][d[1]]['Gop Candidate'])
+                    if (url != null) {
+                        console.log(url)
+                        $( "#image-id" ).attr('src', url)
+                    } else {
+                        $( "#image-id" ).attr('src', 'http://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png')
+                    }
                 })
                 .on("mouseout", function(d) {
                     div.transition()
@@ -200,6 +205,15 @@ function createInitialGrid(data, districts, raceData) {
         gerryList = sortArray(gerryArray)
         partyList = sortArray(partyArray)
         initTransformation();
+}
+
+function getPic(dist, name) {
+    for (var x in picData) {
+        if (picData[x]['name'] == name && picData[x]['district'] == dist) {
+            return picData[x]['url'];
+        }
+    }
+    return null;
 }
 
 function sortArray(arrays) {
@@ -232,7 +246,7 @@ function initTransformation() {
 
 function sortByName() {
     var totalHeight = 0;
-    console.log(nameArray)
+    //console.log(nameArray)
     if (nameBit) {
         for (var z = 0; z < nameArray.length; z++) {
             d3v4.select('.' + nameArray[z]).transition().duration(250).attr("transform", "translate(" + xMargin + "," + (totalHeight) + ")")
@@ -240,7 +254,6 @@ function sortByName() {
         }
     } else {
         totalHeight = 50;
-        console.log('here')
         for (var c = nameArray.length; c >= 0; c--) {
             d3v4.select('.' + nameArray[c]).transition().duration(250).attr("transform", "translate(" + xMargin + "," + (totalHeight - yMarginSpacing) + ")")
             if ( nameArray[c] != null) {
@@ -281,7 +294,7 @@ function sortByParty() {
     var totalHeight = 0;
     if (partyBit) {
         for (var z = 0; z < nameArray.length; z++) {
-            console.log(nameArray[partyList[z]])
+            //console.log(nameArray[partyList[z]])
             d3v4.select('.' + nameArray[partyList[z]]).transition().duration(250).attr("transform", "translate(" + xMargin + "," + totalHeight+ ")")
             totalHeight = d3v4.select('.' + nameArray[z])['_groups'][0][0].getBBox().height + totalHeight
             if (nameArray[partyList[z]] == 'Oklahoma') {
@@ -290,7 +303,7 @@ function sortByParty() {
         }
     } else {
         for (var c = nameArray.length; c >= 0; c--) {
-            console.log(nameArray[partyList[c]])
+            //console.log(nameArray[partyList[c]])
             d3v4.select('.' + nameArray[partyList[c]]).transition().duration(250).attr("transform", "translate(" + xMargin + "," + (totalHeight - yMarginSpacing) + ")")
             if (nameArray[partyList[c]] != null) {
                 totalHeight = d3v4.select('.' + nameArray[partyList[c]])['_groups'][0][0].getBBox().height + totalHeight

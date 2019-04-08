@@ -3,29 +3,29 @@
  */
 var states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
 for (var c = 0; c < states.length; c++) {
+    if (states[c].includes(' '))
     states[c] = states[c].split(' ')[0] + '_' + states[c].split(' ')[1]
 }
+var svg = null;
 
 
 function createDistractMap(name, currDistrict) {
     $(".states").empty();
     var origin = name;
     name =  '#' + name.split(' ').join('_');
-    console.log(name)
     var width = 960,
         height = 600;
 
     var projection = d3.geo.albersUsa()
-        .scale(1280)
+        .scale(2480)
         .translate([width / 2, height / 2]);
 
     var path = d3.geo.path()
         .projection(projection);
 
-    var svg = d3v4.select(".states")
+    svg = d3v4.select(".states")
         .attr("width", width)
         .attr("height", height)
-        .append("g");
 
     queue()
         .defer(d3.json, './Data/us.json')
@@ -63,46 +63,58 @@ function createDistractMap(name, currDistrict) {
                 var stringNum = (d.id).toString();
                 var numbers = stringNum.substring(stringNum.length-2, stringNum.length)
                 //Check state and district number for party and color red or blue
-                if (nameOfState == origin && currDistrict == 'D' + numbers) {
-                    return 'orange'
-                }
                 var party = getParty(nameOfState, numbers)
                 if (party == 'GOP') {
-                    return 'red'
+                    if (nameOfState == origin && currDistrict == 'D' + numbers) {
+                        return '#b2182b'
+                    }
+                    return '#d6604d'
                 } else if (party == 'DEM') {
-                    return 'blue'
+                    if (nameOfState == origin && currDistrict == 'D' + numbers) {
+                        return '#2166ac'
+                    }
+                    return '#4393c3'
                 } else {
-                    return 'grey'
+                    return '#f7f7f7'
                 }
             })
             .append("title")
             .text(function(d) {
                 return d.id; })
-
         svg.append("path")
             .attr("class", "district-boundaries")
             .datum(topojson.mesh(congress, congress.objects.districts, function(a, b) { return a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0); }))
             .attr("d", path)
+            .style('opacity', 0);
 
-        svg.append("path")
-            .attr("class", "state-boundaries")
-            .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-            .attr("d", path)
 
         //svg.selectAll('.districts').style('opacity',1);
 
-        for (var x = 0; x < states.length; x++) {
-            if (states[x] != origin) {
-                svg.selectAll('#' + states[x]).style('opacity', 0)   //0 is hidden
-            }
+        for (var x = 0; x < 407; x++) {
+            svg.selectAll('#' + states[x]).style('opacity', 0)  //0 is hidden
         }
-
-        svg.selectAll(name).style('opacity', 0)   //0 is hidden
-
+        updateMap(name)
     }
-
-    d3.select(self.frameElement).style("height", height + "px");
 }
+
+function updateMap(name) {
+    var xSVG = d3.select('.states').node().getBoundingClientRect().x
+    var ySVG = d3.select('.states').node().getBoundingClientRect().y;
+
+    var hSVG = d3.select('.states').node().getBoundingClientRect().height;
+
+    var xElem = d3.select(name).node().getBoundingClientRect().x
+    var yElem = d3.select(name).node().getBoundingClientRect().y
+
+    if (name == '#California') {
+        svg.selectAll(name).style('opacity', 1).attr('transform', 'translate(' + ((xSVG -  xElem) + 500) + ',' + ((ySVG - yElem) + hSVG/2 + 100) + ')')   //0 is hidden
+    } else if (name == '#Texas') {
+        svg.selectAll(name).style('opacity', 1).attr('transform', 'translate(' + ((xSVG -  xElem) + 500) + ',' + ((ySVG - yElem) + hSVG/2 + 20) + ')')   //0 is hidden
+    } else {
+        svg.selectAll(name).style('opacity', 1).attr('transform', 'translate(' + ((xSVG -  xElem) + 450) + ',' + ((ySVG - yElem) + hSVG/2 - 100 ) + ')')   //0 is hidden
+    }
+}
+
 
 function getId(d) {
     if (d.id < 200 && d.id > 99) {
@@ -230,3 +242,6 @@ function getParty(state, district) {
     }
     return 'None'
 }
+
+//https://www.congress.gov/members?q=%7B%22congress%22%3A%22116%22%7D&pageSize=250&page=2
+//Congres images
