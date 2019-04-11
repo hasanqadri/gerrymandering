@@ -2,30 +2,31 @@
  * Created by haesa on 2/12/2019.
  */
 
-var svgList = {};
+// Initialize variables to hold data (JSON)
+var hData = null;
+var raceData = null;
+var picData = null;
+var data = null;
+
+// Initialize arrays to hold states in sorted orders (alphabetically, by extent of gerrymander, and party percent)
 var nameArray = [];  //Contains names of states alphabetically
 var gerryArray = []; //Contains names of states by most gerrymandered to least
 var gerryList = []
 var partyArray = [];
 var partyList = [];
-var data = null;
+
+// Toggles for our sortings
 var nameBit = 0;
 var gerryBit = 1;
 var partyBit = 1;
+
+// Margins
 var xMargin = 0;
-var yMargin = 50;
 var yMarginSpacing = 50;
-var hData = null;
-var raceData = null;
-var circleState = null;
-var stateData = null;
-var picData = null;
 
-// Define the div for the tooltip
-var div = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
-
+/** Read JSON file and create the dot plot for our application
+ *  Starting point of the application
+ */
 function gerry_graphs() {
 //var margin = {top: 100, right: 275, bottom: 40, left: 275};
 
@@ -41,7 +42,6 @@ function gerry_graphs() {
         .defer(d3v4.csv, "./Data/house_gerry.csv")
         .defer(d3v4.csv, './Data/house_results.csv')
         .defer(d3v4.json, './Data/file_paths.json')
-        .defer(d3v4.json, './Data/us-congress-113.json')
         .defer(d3v4.json, '/Data/state-pics.json')
         .awaitAll(ready);
 
@@ -49,13 +49,17 @@ function gerry_graphs() {
         data = results[0];
         hData = results[1]
         raceData = results[2]
-        stateData = results[3]
-        picData = results[4]
+        picData = results[3]
         var districts = createInitialDistrictHash(hData);
-        createInitialGrid(data, districts, raceData);
+        createInitialGrid(data, districts, raceData, picData);
     }
 }
 
+/**
+ * Creates initial hashmap containing state objects and within those objects the various districts and their election results
+ * @param hData Data depicting house election results
+ * @returns districts Object containing state, party, district, and who won that district
+ */
 function createInitialDistrictHash(hData) {
     var districts = {};
     var state = '';
@@ -84,6 +88,13 @@ function createInitialDistrictHash(hData) {
     return districts;
 }
 
+/**
+ * Creates circles, x-axis, and titles for the left visualization block
+ * @param data Complete election data
+ * @param districts Subset of election data that is formatted around the districts
+ * @param raceData Subset of election data that is
+ * @param picData Contains urls of pictures to be used in vis
+ */
 function createInitialGrid(data, districts, raceData) {
         //Set up circles and x and y values
         var cRadius = 3;
@@ -139,6 +150,7 @@ function createInitialGrid(data, districts, raceData) {
                     return 30 + 10 * parseInt(i/5)
                 })
                 .on("mouseover", function(d) {
+                    $( "#image-id" ).css({'visibility': 'visible'})
                     createDistractMap(d[0], d[1]);
                     $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Dem Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Dem Total']);
                     var url = getPic(d[1], raceData[d[0]][d[1]]['Dem Candidate'])
@@ -181,6 +193,7 @@ function createInitialGrid(data, districts, raceData) {
                     return 30 + 10 * (parseInt(i/5))
                 })
                 .on("mouseover", function(d) {
+                    $( "#image-id" ).css({'visibility': 'visible'})
                     createDistractMap(d[0], d[1]);
                     $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Gop Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Gop Total']);
                     var url = getPic(d[1], raceData[d[0]][d[1]]['Gop Candidate'])
@@ -207,6 +220,12 @@ function createInitialGrid(data, districts, raceData) {
         initTransformation();
 }
 
+/**
+ * Searches for picture given district and name of representative
+ * @param dist
+ * @param name
+ * @returns {*}
+ */
 function getPic(dist, name) {
     for (var x in picData) {
         if (picData[x]['name'] == name && picData[x]['district'] == dist) {
@@ -216,6 +235,11 @@ function getPic(dist, name) {
     return null;
 }
 
+/**
+ * Sorts array in descending order
+ * @param arrays
+ * @returns {Array}
+ */
 function sortArray(arrays) {
     var arr = arrays;
     var retArr = []
@@ -235,6 +259,9 @@ function sortArray(arrays) {
     return retArr;
 }
 
+/**
+ * Modifies positon of left grid
+ */
 function initTransformation() {
     var totalHeight = 0;
     for (var z = 0; z < nameArray.length; z++) {
@@ -244,6 +271,9 @@ function initTransformation() {
     return;
 }
 
+/**
+ * Sorts the left grid by name
+ */
 function sortByName() {
     var totalHeight = 0;
     //console.log(nameArray)
@@ -266,6 +296,9 @@ function sortByName() {
     nameBit = !nameBit;
 }
 
+/**
+ * Sorts left grid by extent of gerrymandering
+ */
 function sortByGerry() {
     var totalHeight = 0;
     if (gerryBit) {
@@ -290,6 +323,9 @@ function sortByGerry() {
     gerryBit = !gerryBit;
 }
 
+/**
+ * Sort left grid by party percent
+ */
 function sortByParty() {
     var totalHeight = 0;
     if (partyBit) {

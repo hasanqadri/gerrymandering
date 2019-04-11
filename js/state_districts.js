@@ -116,6 +116,7 @@ function updateMap(name) {
 }
 
 
+// Ugly way to match states by id. Could come back later and alphabetically sort the states and then match them everytime this function is called.
 function getId(d) {
     if (d.id < 200 && d.id > 99) {
         return 'Alabama'
@@ -134,13 +135,11 @@ function getId(d) {
     } else if (d.id < 1100) {
         return 'Delaware'
     } else if (d.id < 1200) {
-
     } else if (d.id < 1300) {
         return 'Florida'
     } else if (d.id < 1400) {
         return 'Georgia'
     } else if (d.id < 1500) {
-
     } else if (d.id < 1600) {
         return 'Hawaii'
     } else if (d.id < 1700) {
@@ -244,4 +243,4 @@ function getParty(state, district) {
 }
 
 //https://www.congress.gov/members?q=%7B%22congress%22%3A%22116%22%7D&pageSize=250&page=2
-//Congres images
+//Congress images

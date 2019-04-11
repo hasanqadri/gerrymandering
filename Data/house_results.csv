@@ -44,7 +44,7 @@ Connecticut,CT,D02,"U.S. House, Connecticut 2nd congressional district",0.621,17
 Connecticut,CT,D03,"U.S. House, Connecticut 3rd congressional district",0.62,151942,Rosa DeLauro,0.38,92940,Angel Cadena,244882,Dem,FALSE,Dem
 Connecticut,CT,D04,"U.S. House, Connecticut 4th congressional district",0.609,165278,Jim Himes,0.391,106156,Harry Arora,271434,Dem,FALSE,Dem
 Connecticut,CT,D05,"U.S. House, Connecticut 5th congressional district",0.559,140922,Jahana Hayes,0.441,110965,Manny Santos,251887,Dem,FALSE,None
-Arizona,AZ,D01,"U.S. House, Arizona 1st congressional district",0.533,111886,Tom O'Halleran,0.467,97958,Wendy Rogers,209844,Undecided,FALSE,Dem
+Arizona,AZ,D01,"U.S. House, Arizona 1st congressional district",0.533,111886,Tom O'Halleran,0.467,97958,Wendy Rogers,209844,Dem,FALSE,Dem
 Arizona,AZ,D02,"U.S. House, Arizona 2nd congressional district",0.533,125349,Ann Kirkpatrick,0.467,109759,Lea Marquez Peterson,235108,Dem,FALSE,None
 Arizona,AZ,D03,"U.S. House, Arizona 3rd congressional district",0.614,78308,Raul Grijalva,0.386,49331,Nick Pierson,127639,Dem,FALSE,Dem
 Arizona,AZ,D04,"U.S. House, Arizona 4th congressional district",0.298,67346,David Brill,0.69,156086,Paul Gosar,226240,Gop,FALSE,Gop
@@ -58,8 +58,8 @@ Georgia,GA,D02,"U.S. House, Georgia 2nd congressional district",0.596,135707,San
 Georgia,GA,D03,"U.S. House, Georgia 3rd congressional district",0.344,100733,Chuck Enderlin,0.656,191700,Drew Ferguson,292433,Gop,FALSE,Gop
 Georgia,GA,D04,"U.S. House, Georgia 4th congressional district",0.788,225879,Hank Johnson,0.212,60817,Joe Profit,286696,Dem,FALSE,Dem
 Georgia,GA,D05,"U.S. House, Georgia 5th congressional district",1,0,John Lewis,0,0,None,0,Dem,TRUE,Dem
-Georgia,GA,D06,"U.S. House, Georgia 6th congressional district",0.505,159268,Lucy McBath,0.495,156396,Karen Handel,315664,Undecided,FALSE,Gop
-Georgia,GA,D07,"U.S. House, Georgia 7th congressional district",0.498,138914,Carolyn Bourdeaux,0.502,139804,Rob Woodall,278718,Undecided,FALSE,Gop
+Georgia,GA,D06,"U.S. House, Georgia 6th congressional district",0.505,159268,Lucy McBath,0.495,156396,Karen Handel,315664,Dem,FALSE,Gop
+Georgia,GA,D07,"U.S. House, Georgia 7th congressional district",0.498,138914,Carolyn Bourdeaux,0.502,139804,Rob Woodall,278718,Gop,FALSE,Gop
 Georgia,GA,D08,"U.S. House, Georgia 8th congressional district",0,0,None,1,0,Austin Scott,0,Gop,TRUE,Gop
 Georgia,GA,D09,"U.S. House, Georgia 9th congressional district",0.205,57823,Josh McCall,0.795,224412,Doug Collins,282235,Gop,FALSE,Gop
 Georgia,GA,D10,"U.S. House, Georgia 10th congressional district",0.371,111938,Tabitha Johnson-Green,0.629,190080,Jody Hice,302018,Gop,FALSE,Gop
@@ -83,7 +83,7 @@ California,CA,D06,"U.S. House, California 6th congressional district",0.203,1478
 California,CA,D07,"U.S. House, California 7th congressional district",0.527,54097,Ami Bera,0.473,48597,Andrew Grant,102694,Dem,FALSE,Dem
 California,CA,D08,"U.S. House, California 8th congressional district",0,0,None,0.397,43589,Tim Donnelly,109725,Gop,FALSE,Gop
 California,CA,D09,"U.S. House, California 9th congressional district",0.543,56188,Jerry McNerney,0.457,47316,Marla Livengood,103504,Dem,FALSE,Dem
-California,CA,D10,"U.S. House, California 10th congressional district",0.494,55414,Josh Harder,0.506,56701,Jeff Denham,112115,Undecided,FALSE,Gop
+California,CA,D10,"U.S. House, California 10th congressional district",0.494,55414,Josh Harder,0.506,56701,Jeff Denham,112115,Dem,FALSE,Gop
 California,CA,D11,"U.S. House, California 11th congressional district",0.719,110188,Mark DeSaulnier,0.281,43053,John Fitzgerald,153241,Dem,FALSE,Dem
 California,CA,D12,"U.S. House, California 12th congressional district",0.855,161212,Nancy Pelosi,0.145,27231,Lisa Remmer,188443,Dem,FALSE,Dem
 California,CA,D13,"U.S. House, California 13th congressional district",0.877,106951,Barbara Lee,0,0,None,121934,Dem,FALSE,Dem
@@ -98,7 +98,7 @@ California,CA,D21,"U.S. House, California 21st congressional district",0.463,305
 California,CA,D22,"U.S. House, California 22nd congressional district",0.442,59528,Andrew Janz,0.558,75111,Devin Nunes,134639,Gop,FALSE,Gop
 California,CA,D23,"U.S. House, California 23rd congressional district",0.335,45152,Tatiana Matta,0.665,89568,Kevin McCarthy,134720,Gop,FALSE,Gop
 California,CA,D24,"U.S. House, California 24th congressional district",0.56,96088,Salud Carbajal,0.44,75578,Justin Fareed,171666,Dem,FALSE,Dem
-California,CA,D25,"U.S. House, California 25th congressional district",0.513,83662,Katie Hill,0.487,79545,Steve Knight,163207,Undecided,FALSE,Gop
+California,CA,D25,"U.S. House, California 25th congressional district",0.513,83662,Katie Hill,0.487,79545,Steve Knight,163207,Dem,FALSE,Gop
 California,CA,D26,"U.S. House, California 26th congressional district",0.594,96489,Julia Brownley,0.406,65894,Antonio Sabato,162383,Dem,FALSE,Dem
 California,CA,D27,"U.S. House, California 27th congressional district",0.216,28740,Bryan Witt,0,0,None,133154,Dem,FALSE,Dem
 California,CA,D28,"U.S. House, California 28th congressional district",0.764,127153,Adam Schiff,0.236,39188,Johnny Nalbandian,166341,Dem,FALSE,Dem
@@ -112,17 +112,17 @@ California,CA,D35,"U.S. House, California 35th congressional district",0.676,589
 California,CA,D36,"U.S. House, California 36th congressional district",0.564,57675,Raul Ruiz,0.436,44616,Kimberlin Pelzer,102291,Dem,FALSE,Dem
 California,CA,D37,"U.S. House, California 37th congressional district",0.882,134719,Karen Bass,0.118,17972,Ron Bassilian,152691,Dem,FALSE,Dem
 California,CA,D38,"U.S. House, California 38th congressional district",0.669,91031,Linda Sanchez,0.331,45115,Ryan Downing,136146,Dem,FALSE,Dem
-California,CA,D39,"U.S. House, California 39th congressional district",0.487,73077,Gil Cisneros,0.513,76956,Young Kim,150033,Undecided,FALSE,None
+California,CA,D39,"U.S. House, California 39th congressional district",0.487,73077,Gil Cisneros,0.513,76956,Young Kim,150033,Dem,FALSE,None
 California,CA,D40,"U.S. House, California 40th congressional district",0.779,61357,Lucille Roybal-Allard,0,0,None,78811,Dem,FALSE,Dem
 California,CA,D41,"U.S. House, California 41st congressional district",0.604,43929,Mark Takano,0.396,28749,Aja Smith,72678,Dem,FALSE,Dem
 California,CA,D42,"U.S. House, California 42nd congressional district",0.406,42245,Julia Peacock,0.594,61833,Ken Calvert,104078,Gop,FALSE,Gop
 California,CA,D43,"U.S. House, California 43rd congressional district",0.758,97911,Maxine Waters,0.242,31188,Omar Navarro,129099,Dem,FALSE,Dem
 California,CA,D44,"U.S. House, California 44th congressional district",0.306,28961,Aja Brown,0,0,None,94709,Dem,FALSE,Dem
-California,CA,D45,"U.S. House, California 45th congressional district",0.483,88765,Katie Porter,0.517,94998,Mimi Walters,183763,Undecided,FALSE,Gop
+California,CA,D45,"U.S. House, California 45th congressional district",0.483,88765,Katie Porter,0.517,94998,Mimi Walters,183763,Dem,FALSE,Gop
 California,CA,D46,"U.S. House, California 46th congressional district",0.634,47763,Lou Correa,0.366,27600,Russell Lambert,75363,Dem,FALSE,Dem
 California,CA,D47,"U.S. House, California 47th congressional district",0.624,86427,Alan Lowenthal,0.376,52131,John Briscoe,138558,Dem,FALSE,Dem
-California,CA,D48,"U.S. House, California 48th congressional district",0.507,91750,Harley Rouda,0.493,89068,Dana Rohrabacher,180818,Undecided,FALSE,Gop
-California,CA,D49,"U.S. House, California 49th congressional district",0.524,76135,Mike Levin,0.476,69031,Diane Harkey,145166,Undecided,FALSE,None
+California,CA,D48,"U.S. House, California 48th congressional district",0.507,91750,Harley Rouda,0.493,89068,Dana Rohrabacher,180818,Dem,FALSE,Gop
+California,CA,D49,"U.S. House, California 49th congressional district",0.524,76135,Mike Levin,0.476,69031,Diane Harkey,145166,Dem,FALSE,None
 California,CA,D50,"U.S. House, California 50th congressional district",0.458,56481,Ammar Campa-Najjar,0.542,66934,Duncan D. Hunter,123415,Gop,FALSE,Gop
 California,CA,D51,"U.S. House, California 51st congressional district",0.67,43387,Juan Vargas,0.33,21323,Juan Hidalgo,64710,Dem,FALSE,Dem
 California,CA,D52,"U.S. House, California 52nd congressional district",0.608,91206,Scott Peters,0.392,58821,Omar Qudrat,150027,Dem,FALSE,Dem
@@ -230,7 +230,7 @@ Massachusetts,MA,D07,"U.S. House, Massachusetts 7th congressional district",1,0,
 Massachusetts,MA,D08,"U.S. House, Massachusetts 8th congressional district",1,0,Stephen Lynch,0,0,None,0,Dem,TRUE,Dem
 Massachusetts,MA,D09,"U.S. House, Massachusetts 9th congressional district",0.593,175967,Bill Keating,0.407,120663,Peter Tedeschi,296630,Dem,FALSE,Dem
 Maine,ME,D01,"U.S. House, Maine 1st congressional district",0.592,190348,Chellie Pingree,0.321,103185,Mark Holbrook,321775,Dem,FALSE,Dem
-Maine,ME,D02,"U.S. House, Maine 2nd congressional district",0.459,120030,Jared Golden,0.46,120214,Bruce Poliquin,261362,Undecided,FALSE,Gop
+Maine,ME,D02,"U.S. House, Maine 2nd congressional district",0.459,120030,Jared Golden,0.46,120214,Bruce Poliquin,261362,Dem,FALSE,Gop
 Montana,MT,D00,"U.S. House, Montana at-large congressional district",0.453,205911,Kathleen Williams,0.52,236379,Greg Gianforte,454992,Gop,FALSE,Gop
 Nebraska,NE,D01,"U.S. House, Nebraska 1st congressional district",0.397,90551,Jessica McClure,0.603,137632,Jeff Fortenberry,228183,Gop,FALSE,Gop
 Nebraska,NE,D02,"U.S. House, Nebraska 2nd congressional district",0.484,114154,Kara Eastman,0.516,121466,Don Bacon,235620,Gop,FALSE,Gop
@@ -257,8 +257,8 @@ Ohio,OH,D15,"U.S. House, Ohio 15th congressional district",0.395,112546,Rick Nea
 Ohio,OH,D16,"U.S. House, Ohio 16th congressional district",0.432,126736,Susan Moran Palmer,0.568,166933,Anthony Gonzalez,293669,Gop,FALSE,None
 New Jersey,NJ,D01,"U.S. House, New Jersey 1st congressional district",0.634,136540,Donald Norcross,0.342,73702,Paul Dilks,215314,Dem,FALSE,Dem
 New Jersey,NJ,D02,"U.S. House, New Jersey 2nd congressional district",0.52,122562,Jeff Van Drew,0.462,108822,Seth Grossman,235701,Dem,FALSE,None
-New Jersey,NJ,D03,"U.S. House, New Jersey 3rd congressional district",0.489,134093,Andy Kim,0.498,136408,Tom MacArthur,274133,Undecided,FALSE,Gop
-New Jersey,NJ,D04,"U.S. House, New Jersey 4th congressional district",0.427,119394,Joshua Welle,0.558,156271,Chris Smith,279874,Gop,FALSE,Gop
+New Jersey,NJ,D03,"U.S. House, New Jersey 3rd congressional district",0.489,134093,Andy Kim,0.498,136408,Tom MacArthur,274133,Dem,FALSE,Gop
+New Jersey,NJ,D04,"U.S. House, New Jersey 4th congressional district",0.427,119394,Joshua Welle,0.558,156271,Chris Smith,279874,Dem,FALSE,Gop
 New Jersey,NJ,D05,"U.S. House, New Jersey 5th congressional district",0.552,148021,Josh Gottheimer,0.435,116505,John McCann,268094,Dem,FALSE,Dem
 New Jersey,NJ,D06,"U.S. House, New Jersey 6th congressional district",0.627,121502,Frank Pallone,0.373,72337,Richard Pezzullo,193839,Dem,FALSE,Dem
 New Jersey,NJ,D07,"U.S. House, New Jersey 7th congressional district",0.505,138729,Tom Malinowski,0.48,131935,Leonard Lance,274897,Dem,FALSE,Gop
@@ -271,7 +271,7 @@ North Dakota,ND,D00,"U.S. House, North Dakota at-large congressional district",0
 New Hampshire,NH,D01,"U.S. House, New Hampshire 1st congressional district",0.537,154583,Chris Pappas,0.449,129377,Eddie Edwards,288094,Dem,FALSE,None
 New Hampshire,NH,D02,"U.S. House, New Hampshire 2nd congressional district",0.558,152022,Ann McLane Kuster,0.42,114449,Steven Negron,272468,Dem,FALSE,Dem
 New Mexico,NM,D01,"U.S. House, New Mexico 1st congressional district",0.59,144299,Debra Haaland,0.364,89062,Janice Arnold-Jones,244504,Dem,FALSE,None
-New Mexico,NM,D02,"U.S. House, New Mexico 2nd congressional district",0.495,92459,Xochitl Torres Small,0.505,94431,Yvette Herrell,186890,Undecided,FALSE,None
+New Mexico,NM,D02,"U.S. House, New Mexico 2nd congressional district",0.495,92459,Xochitl Torres Small,0.505,94431,Yvette Herrell,186890,Dem,FALSE,None
 New Mexico,NM,D03,"U.S. House, New Mexico 3rd congressional district",0.633,154057,Ben Ray Lujan,0.313,76043,Jerald Steve McFall,243281,Dem,FALSE,Dem
 North Carolina,NC,D01,"U.S. House, North Carolina 1st congressional district",0.698,188060,G.K. Butterfield,0.302,81474,Roger Allison,269534,Dem,FALSE,Dem
 North Carolina,NC,D02,"U.S. House, North Carolina 2nd congressional district",0.459,148572,Linda Coleman,0.512,166035,George Holding,323974,Gop,FALSE,Gop
@@ -364,7 +364,7 @@ Vermont,VT,D00,"U.S. House, Vermont at-large congressional district",0.693,18814
 Utah,UT,D01,"U.S. House, Utah 1st congressional district",0.244,48372,Lee Castillo,0.628,124377,Rob Bishop,198024,Gop,FALSE,Gop
 Utah,UT,D02,"U.S. House, Utah 2nd congressional district",0.376,79510,Shireen Ghorbani,0.579,122540,Chris Stewart,211538,Gop,FALSE,Gop
 Utah,UT,D03,"U.S. House, Utah 3rd congressional district",0.287,46477,James Singer,0.669,108476,John Curtis,162104,Gop,FALSE,Gop
-Utah,UT,D04,"U.S. House, Utah 4th congressional district",0.513,93994,Ben McAdams,0.487,89280,Mia Love,183274,Undecided,FALSE,Gop
+Utah,UT,D04,"U.S. House, Utah 4th congressional district",0.513,93994,Ben McAdams,0.487,89280,Mia Love,183274,Dem,FALSE,Gop
 Texas,TX,D01,"U.S. House, Texas 1st congressional district",0.263,60957,Shirley McKellar,0.723,167734,Louie Gohmert,231969,Gop,FALSE,Gop
 Texas,TX,D02,"U.S. House, Texas 2nd congressional district",0.454,118570,Todd Litton,0.53,138502,Dan Crenshaw,261255,Gop,FALSE,None
 Texas,TX,D03,"U.S. House, Texas 3rd congressional district",0.442,137547,Lorie Burch,0.543,168775,Van Taylor,310917,Gop,FALSE,None
@@ -387,7 +387,7 @@ Texas,TX,D19,"U.S. House, Texas 19th congressional district",0.247,49941,Miguel 
 Texas,TX,D20,"U.S. House, Texas 20th congressional district",0.809,138249,Joaquin Castro,0,0,None,170976,Dem,FALSE,Dem
 Texas,TX,D21,"U.S. House, Texas 21st congressional district",0.475,167020,Joseph Kopser,0.503,176913,Chip Roy,351430,Gop,FALSE,None
 Texas,TX,D22,"U.S. House, Texas 22nd congressional district",0.464,137500,Sri Kulkarni,0.514,152318,Pete Olson,296306,Gop,FALSE,Gop
-Texas,TX,D23,"U.S. House, Texas 23rd congressional district",0.488,102214,Gina Ortiz Jones,0.491,102903,Will Hurd,209519,Undecided,FALSE,Gop
+Texas,TX,D23,"U.S. House, Texas 23rd congressional district",0.488,102214,Gina Ortiz Jones,0.491,102903,Will Hurd,209519,Gop,FALSE,Gop
 Texas,TX,D24,"U.S. House, Texas 24th congressional district",0.475,124580,Jan McDowell,0.507,132992,Kenny Marchant,262433,Gop,FALSE,Gop
 Texas,TX,D25,"U.S. House, Texas 25th congressional district",0.447,135288,Julie Oliver,0.536,162288,Roger Williams,302700,Gop,FALSE,Gop
 Texas,TX,D26,"U.S. House, Texas 26th congressional district",0.39,121584,Linsey Fagan,0.594,185268,Michael Burgess,311860,Gop,FALSE,Gop
@@ -414,12 +414,12 @@ Virginia,VA,D10,"U.S. House, Virginia 10th congressional district",0.562,202557,
 Virginia,VA,D11,"U.S. House, Virginia 11th congressional district",0.711,213587,Gerry Connolly,0.271,81375,Jeff Dove,300357,Dem,FALSE,Dem
 Washington,WA,D01,"U.S. House, Washington 1st congressional district",0.586,129442,Suzan DelBene,0.414,91454,Jeffrey Beeler,220896,Dem,FALSE,Dem
 Washington,WA,D02,"U.S. House, Washington 2nd congressional district",0.724,135831,Rick Larsen,0,0,None,187540,Dem,FALSE,Dem
-Washington,WA,D03,"U.S. House, Washington 3rd congressional district",0.477,105654,Carolyn Long,0.523,115616,Jaime Herrera Beutler,221270,Undecided,FALSE,Gop
+Washington,WA,D03,"U.S. House, Washington 3rd congressional district",0.477,105654,Carolyn Long,0.523,115616,Jaime Herrera Beutler,221270,Gop,FALSE,Gop
 Washington,WA,D04,"U.S. House, Washington 4th congressional district",0.346,45040,Christine Brown,0.654,85149,Dan Newhouse,130189,Gop,FALSE,Gop
 Washington,WA,D05,"U.S. House, Washington 5th congressional district",0.441,81295,Lisa Brown,0.559,103238,Cathy McMorris Rodgers,184533,Gop,FALSE,Gop
 Washington,WA,D06,"U.S. House, Washington 6th congressional district",0.628,124292,Derek Kilmer,0.372,73561,Douglas Dightman,197853,Dem,FALSE,Dem
 Washington,WA,D07,"U.S. House, Washington 7th congressional district",0.834,224351,Pramila Jayapal,0.166,44732,Craig Keller,269083,Dem,FALSE,Dem
-Washington,WA,D08,"U.S. House, Washington 8th congressional district",0.529,104520,Kim Schrier,0.471,92900,Dino Rossi,197420,Undecided,FALSE,None
+Washington,WA,D08,"U.S. House, Washington 8th congressional district",0.529,104520,Kim Schrier,0.471,92900,Dino Rossi,197420,Dem,FALSE,None
 Washington,WA,D09,"U.S. House, Washington 9th congressional district",0.299,47502,Sarah Smith,0,0,None,158951,Dem,FALSE,Dem
 Washington,WA,D10,"U.S. House, Washington 10th congressional district",0.609,89137,Denny Heck,0.391,57272,Joseph Brumbles,146409,Dem,FALSE,Dem
 West Virginia,WV,D01,"U.S. House, West Virginia 1st congressional district",0.354,70402,Kendra Fershee,0.646,128725,David McKinley,199127,Gop,FALSE,Gop
