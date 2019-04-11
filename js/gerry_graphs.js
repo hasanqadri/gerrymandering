@@ -154,8 +154,9 @@ function createInitialGrid(data, districts, raceData) {
                 .on("mouseover", function(d) {
                     $( "#image-id" ).css({'visibility': 'visible'})
                     updateMap(d[0], d[1]);  // d[0] == name, d[1] = district
-                    $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Dem Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Dem Total']);
-                    var url = getPic(d[1], raceData[d[0]][d[1]]['Dem Candidate'])
+                    var name = d[0].split('_').join(' ');
+                    $( "#state-info" ).html('Representative: ' + raceData[name][d[1]]['Dem Candidate'] + '<br>District: ' +  d[1] + ' <br>Popular vote: ' + raceData[name][d[1]]['Dem Total']);
+                    var url = getPic(d[1], raceData[name][d[1]]['Dem Candidate'])
                     if (url != null) {
                         $( "#image-id" ).attr('src', url)
                     } else {
@@ -193,9 +194,12 @@ function createInitialGrid(data, districts, raceData) {
                 })
                 .on("mouseover", function(d) {
                     $( "#image-id" ).css({'visibility': 'visible'})
-                    updateMap(d[0], d[1]);  
-                    $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Gop Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Gop Total']);
-                    var url = getPic(d[1], raceData[d[0]][d[1]]['Gop Candidate'])
+                    updateMap(d[0], d[1]);
+                    console.log(d[0])
+                    console.log(d[1])
+                    var name = d[0].split('_').join(' ');
+                    $( "#state-info" ).html('Representative: ' + raceData[name][d[1]]['Gop Candidate'] + '<br>District: ' +  d[1] + ' <br>Popular vote: ' + raceData[name][d[1]]['Gop Total']);
+                    var url = getPic(d[1], raceData[name][d[1]]['Gop Candidate'])
                     if (url != null) {
                         $( "#image-id" ).attr('src', url)
                     } else {
@@ -302,6 +306,12 @@ function sortByGerry() {
             totalHeight = d3v4.select('.' + nameArray[z])['_groups'][0][0].getBBox().height + totalHeight
             if (nameArray[gerryList[z]] == 'Nebraska' ) {
                 totalHeight = totalHeight - 50;
+            } else if (nameArray[gerryList[z]] == 'California') {
+            totalHeight = totalHeight + 40;
+            } else if (nameArray[gerryList[z]] == 'Texas') {
+                totalHeight = totalHeight + 25;
+            } else if (nameArray[gerryList[z]] == 'New_York') {
+                totalHeight = totalHeight + 20;
             }
         }
     } else {
@@ -310,8 +320,13 @@ function sortByGerry() {
             d3v4.select('.' + nameArray[gerryList[c]]).transition().duration(250).attr("transform", "translate(" + xMargin + "," + (totalHeight - yMarginSpacing) + ")")
             if (nameArray[gerryList[c]] != null) {
                 totalHeight = d3v4.select('.' + nameArray[gerryList[c]])['_groups'][0][0].getBBox().height + totalHeight
+            } else if (nameArray[gerryList[c]] == 'California') {
+                totalHeight = totalHeight + 60;
+            } else if (nameArray[gerryList[c]] == 'Texas') {
+                totalHeight = totalHeight + 60;
             } else {
                 totalHeight = totalHeight + 50;
+
             }
         }
     }
@@ -330,6 +345,12 @@ function sortByParty() {
             totalHeight = d3v4.select('.' + nameArray[z])['_groups'][0][0].getBBox().height + totalHeight
             if (nameArray[partyList[z]] == 'Oklahoma') {
                 totalHeight = totalHeight - 50;
+            } else if (nameArray[partyList[z]] == 'California') {
+                totalHeight = totalHeight + 60
+            } else if (nameArray[partyList[z]] == 'Texas') {
+                totalHeight = totalHeight + 20
+            } else if (nameArray[partyList[z]] == 'Nevada') {
+                totalHeight = totalHeight - 10
             }
         }
     } else {

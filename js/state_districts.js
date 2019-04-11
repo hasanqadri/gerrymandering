@@ -101,6 +101,8 @@ function createDistractMap() {
                     svg.selectAll(name).attr('transform', 'translate(' + ((xSVG - xElem) + 350) + ',' + ((ySVG - yElem) + hSVG / 2 + 140) + ')')
                 } else if (name == '#Texas') {
                     svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 300) + ',' + ((ySVG - yElem) + hSVG / 2 + 60) + ')')
+                } else if (name == '#Nevada') {
+                    svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 300) + ',' + ((ySVG - yElem) + hSVG / 2 + 50) + ')')
                 } else {
                     svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 300) + ',' + ((ySVG - yElem) + hSVG / 2 - 70 ) + ')')
                 }
