@@ -14,7 +14,7 @@ for (var c = 0; c < states.length; c++) {
 function createDistractMap() {
     $(".states").empty();
 
-    var width = 660,
+    var width = 1060,
         height = 600;
 
     var projection = d3.geo.albersUsa()
@@ -98,11 +98,11 @@ function createDistractMap() {
                 var xElem = d3.select(name).node().getBoundingClientRect().x
                 var yElem = d3.select(name).node().getBoundingClientRect().y
                 if (name == '#California') {
-                    svg.selectAll(name).attr('transform', 'translate(' + ((xSVG - xElem) + 400) + ',' + ((ySVG - yElem) + hSVG / 2 + 100) + ')')
+                    svg.selectAll(name).attr('transform', 'translate(' + ((xSVG - xElem) + 350) + ',' + ((ySVG - yElem) + hSVG / 2 + 140) + ')')
                 } else if (name == '#Texas') {
-                    svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 400) + ',' + ((ySVG - yElem) + hSVG / 2 + 20) + ')')
+                    svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 300) + ',' + ((ySVG - yElem) + hSVG / 2 + 60) + ')')
                 } else {
-                    svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 350) + ',' + ((ySVG - yElem) + hSVG / 2 - 100 ) + ')')
+                    svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 300) + ',' + ((ySVG - yElem) + hSVG / 2 - 70 ) + ')')
                 }
             }
             svg.selectAll('#' + states[x]).style('opacity', 0)  //0 is hidden

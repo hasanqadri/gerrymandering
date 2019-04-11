@@ -157,7 +157,6 @@ function createInitialGrid(data, districts, raceData) {
                     $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Dem Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Dem Total']);
                     var url = getPic(d[1], raceData[d[0]][d[1]]['Dem Candidate'])
                     if (url != null) {
-                        console.log(url)
                         $( "#image-id" ).attr('src', url)
                     } else {
                         $( "#image-id" ).attr('src', 'http://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png')

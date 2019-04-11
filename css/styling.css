@@ -9,86 +9,38 @@ body {
     font-weight: 700;
 }
 
-.slope-line {
-    stroke: #333;
-    stroke-width: 2px;
-    stroke-linecap: round;
-}
-
-.slope-label-left, .slope-label-right {
-    font-size: 16px;
-    cursor: default;
-    font-weight: 400;
-}
-
-.label-figure {
-    font-weight: 700;
-}
-
-.border-lines {
-    stroke: #999;
-    stroke-width: 1px;
-}
-
-.voronoi path {
-    fill: none;
-    pointer-events: all;
-}
-
 circle {
     fill: white;
     stroke: black;
     stroke-width: 2px;
 }
 
-div.tooltip {
-    position: absolute;
-    text-align: center;
-    width: 80px;
-    height: 60px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
-}
-
-div.v2 {
-    border-left: 2px solid gray;
-    opacity: .5;
-    height: 2000px;
-    left: 18%;
-    position:absolute;
-    margin-left: -3px;
-    top: 26%;
-}
-
 .container{
     display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
+    flex-direction: row;
     background: #fff;
-    position: absolute;
     top: 110px;
 }
 
 .innerContainer {
-    flex: 0 1 350px;
-    flex-flow: row wrap;
-    position: relative;
     top: 20px;
+    margin-top: 40px;
+    margin-left: 100px;
+    width: 450px;
+    position:relative;
 }
 
 .innerContainer2 {
-    position: relative;
-    overflow: hidden;
-    flex: 0 1 1000px;
-    flex-flow: column wrap;
     top: 20px;
+    margin-top: 40px;
+    width:90%;
+    margin-left: 100px;
+    position:relative;
+
+
 }
 
-/**District Styling**/
+/**Start of District Styling**/
 
 path {
     stroke-linejoin: round;
@@ -116,4 +68,4 @@ path {
     stroke: #fff;
     stroke-width: 1.5px;
 }
-/**District Styling**/
+/**End of District Styling**/
