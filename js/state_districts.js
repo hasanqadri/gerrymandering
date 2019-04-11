@@ -1,19 +1,20 @@
 /**
  * Created by haesa on 3/21/2019.
  */
+
 var states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+var svg = null;
+
 for (var c = 0; c < states.length; c++) {
     if (states[c].includes(' '))
     states[c] = states[c].split(' ')[0] + '_' + states[c].split(' ')[1]
 }
-var svg = null;
 
 
-function createDistractMap(name, currDistrict) {
+function createDistractMap() {
     $(".states").empty();
-    var origin = name;
-    name =  '#' + name.split(' ').join('_');
-    var width = 960,
+
+    var width = 660,
         height = 600;
 
     var projection = d3.geo.albersUsa()
@@ -65,14 +66,8 @@ function createDistractMap(name, currDistrict) {
                 //Check state and district number for party and color red or blue
                 var party = getParty(nameOfState, numbers)
                 if (party == 'GOP') {
-                    if (nameOfState == origin && currDistrict == 'D' + numbers) {
-                        return '#b2182b'
-                    }
                     return '#d6604d'
                 } else if (party == 'DEM') {
-                    if (nameOfState == origin && currDistrict == 'D' + numbers) {
-                        return '#2166ac'
-                    }
                     return '#4393c3'
                 } else {
                     return '#f7f7f7'
@@ -87,34 +82,88 @@ function createDistractMap(name, currDistrict) {
             .attr("d", path)
             .style('opacity', 0);
 
-
-        //svg.selectAll('.districts').style('opacity',1);
-
         for (var x = 0; x < 407; x++) {
+            var name = states[x];
+            if (name == undefined) {
+                continue;
+            }
+            name = '#' + name.split(' ').join('_');
+            //Excluding non-states
+            if (name != '#American_Samoa' && name != '#District_of' && name != '#Federated_States' && name != '#Guam' && name != '#Marshall_Islands' && name != '#Northern_Mariana' && name != '#Palau' && name != '#Puerto_Rico' && name != '#Virgin_Island') {
+
+                var xSVG = d3.select('.states').node().getBoundingClientRect().x
+                var ySVG = d3.select('.states').node().getBoundingClientRect().y;
+
+                var hSVG = d3.select('.states').node().getBoundingClientRect().height;
+                var xElem = d3.select(name).node().getBoundingClientRect().x
+                var yElem = d3.select(name).node().getBoundingClientRect().y
+                if (name == '#California') {
+                    svg.selectAll(name).attr('transform', 'translate(' + ((xSVG - xElem) + 400) + ',' + ((ySVG - yElem) + hSVG / 2 + 100) + ')')
+                } else if (name == '#Texas') {
+                    svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 400) + ',' + ((ySVG - yElem) + hSVG / 2 + 20) + ')')
+                } else {
+                    svg.selectAll(name).style('opacity', 0).attr('transform', 'translate(' + ((xSVG - xElem) + 350) + ',' + ((ySVG - yElem) + hSVG / 2 - 100 ) + ')')
+                }
+            }
             svg.selectAll('#' + states[x]).style('opacity', 0)  //0 is hidden
+
         }
-        updateMap(name)
     }
 }
 
-function updateMap(name) {
-    var xSVG = d3.select('.states').node().getBoundingClientRect().x
-    var ySVG = d3.select('.states').node().getBoundingClientRect().y;
-
-    var hSVG = d3.select('.states').node().getBoundingClientRect().height;
-
-    var xElem = d3.select(name).node().getBoundingClientRect().x
-    var yElem = d3.select(name).node().getBoundingClientRect().y
-
-    if (name == '#California') {
-        svg.selectAll(name).style('opacity', 1).attr('transform', 'translate(' + ((xSVG -  xElem) + 500) + ',' + ((ySVG - yElem) + hSVG/2 + 100) + ')')   //0 is hidden
-    } else if (name == '#Texas') {
-        svg.selectAll(name).style('opacity', 1).attr('transform', 'translate(' + ((xSVG -  xElem) + 500) + ',' + ((ySVG - yElem) + hSVG/2 + 20) + ')')   //0 is hidden
-    } else {
-        svg.selectAll(name).style('opacity', 1).attr('transform', 'translate(' + ((xSVG -  xElem) + 450) + ',' + ((ySVG - yElem) + hSVG/2 - 100 ) + ')')   //0 is hidden
+function updateMap(name, currDistrict) {
+    for (var x = 0; x < 407; x++) {
+        svg.selectAll('#' + states[x]).style('opacity', 0)  //0 is hidden
     }
+    var origin = name;
+    name = '#' + name.split(' ').join('_');
+
+    svg.selectAll(name).style('opacity', 1)
+
+    //Fills all of the districts in a state and highlights the selected state
+    svg.selectAll(name).attr('fill', function(d) {
+        var nameOfState = getId(d)
+        var stringNum = (d.id).toString();
+        var numbers = stringNum.substring(stringNum.length - 2, stringNum.length)
+        //Check state and district number for party and color red or blue
+        var party = getParty(nameOfState, numbers)
+        if (party == 'GOP') {
+            if (nameOfState == origin && currDistrict == 'D' + numbers) {
+                return '#b2182b'
+            }
+            return '#d6604d'
+        } else if (party == 'DEM') {
+            if (nameOfState == origin && currDistrict == 'D' + numbers) {
+                return '#2166ac'
+            }
+            return '#4393c3'
+        } else {
+            return '#f7f7f7'
+        }
+    });
 }
 
+/**
+ * Reverts the color of the hovered over distric to its original color before the highlight
+ * @param name
+ */
+function revertDistrictColor(name) {
+    name =  '#' + name.split(' ').join('_');
+    svg.selectAll(name).attr('fill', function(d) {
+        var nameOfState = getId(d)
+        var stringNum = (d.id).toString();
+        var numbers = stringNum.substring(stringNum.length - 2, stringNum.length)
+        //Check state and district number for party and color red or blue
+        var party = getParty(nameOfState, numbers)
+        if (party == 'GOP') {
+            return '#d6604d'
+        } else if (party == 'DEM') {
+            return '#4393c3'
+        } else {
+            return '#f7f7f7'
+        }
+    });
+}
 
 // Ugly way to match states by id. Could come back later and alphabetically sort the states and then match them everytime this function is called.
 function getId(d) {

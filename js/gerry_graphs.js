@@ -97,6 +97,8 @@ function createInitialDistrictHash(hData) {
  */
 function createInitialGrid(data, districts, raceData) {
         //Set up circles and x and y values
+        createDistractMap();
+
         var cRadius = 3;
 
         //Add district data to stte data
@@ -151,7 +153,7 @@ function createInitialGrid(data, districts, raceData) {
                 })
                 .on("mouseover", function(d) {
                     $( "#image-id" ).css({'visibility': 'visible'})
-                    createDistractMap(d[0], d[1]);
+                    updateMap(d[0], d[1]);  // d[0] == name, d[1] = district
                     $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Dem Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Dem Total']);
                     var url = getPic(d[1], raceData[d[0]][d[1]]['Dem Candidate'])
                     if (url != null) {
@@ -162,9 +164,7 @@ function createInitialGrid(data, districts, raceData) {
                     }
                 })
                 .on("mouseout", function(d) {
-                    div.transition()
-                        .duration(100)
-                        .style("opacity", 0)
+                    revertDistrictColor(d[0], d[1])
                 });
 
             //x_axis
@@ -194,20 +194,17 @@ function createInitialGrid(data, districts, raceData) {
                 })
                 .on("mouseover", function(d) {
                     $( "#image-id" ).css({'visibility': 'visible'})
-                    createDistractMap(d[0], d[1]);
+                    updateMap(d[0], d[1]);  
                     $( "#state-info" ).html('District: ' +  d[1] + ' <br>Representative: ' + raceData[d[0]][d[1]]['Gop Candidate'] + '<br>Popular vote: ' + raceData[d[0]][d[1]]['Gop Total']);
                     var url = getPic(d[1], raceData[d[0]][d[1]]['Gop Candidate'])
                     if (url != null) {
-                        console.log(url)
                         $( "#image-id" ).attr('src', url)
                     } else {
                         $( "#image-id" ).attr('src', 'http://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png')
                     }
                 })
                 .on("mouseout", function(d) {
-                    div.transition()
-                        .duration(100)
-                        .style("opacity", 0);
+                    revertDistrictColor(d[0], d[1])
                 });
 
             nameArray.push(data[x]['State'])
@@ -276,7 +273,6 @@ function initTransformation() {
  */
 function sortByName() {
     var totalHeight = 0;
-    //console.log(nameArray)
     if (nameBit) {
         for (var z = 0; z < nameArray.length; z++) {
             d3v4.select('.' + nameArray[z]).transition().duration(250).attr("transform", "translate(" + xMargin + "," + (totalHeight) + ")")
