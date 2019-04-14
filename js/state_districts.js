@@ -113,6 +113,11 @@ function createDistractMap() {
     }
 }
 
+/**
+ *  Searches for current district selected and fills in that district as the highlight and makes it visible.
+ * @param name
+ * @param currDistrict
+ */
 function updateMap(name, currDistrict) {
     for (var x = 0; x < 407; x++) {
         svg.selectAll('#' + states[x]).style('opacity', 0)  //0 is hidden
@@ -138,28 +143,6 @@ function updateMap(name, currDistrict) {
             if (nameOfState == origin && currDistrict == 'D' + numbers) {
                 return '#2166ac'
             }
-            return '#4393c3'
-        } else {
-            return '#f7f7f7'
-        }
-    });
-}
-
-/**
- * Reverts the color of the hovered over distric to its original color before the highlight
- * @param name
- */
-function revertDistrictColor(name) {
-    name =  '#' + name.split(' ').join('_');
-    svg.selectAll(name).attr('fill', function(d) {
-        var nameOfState = getId(d)
-        var stringNum = (d.id).toString();
-        var numbers = stringNum.substring(stringNum.length - 2, stringNum.length)
-        //Check state and district number for party and color red or blue
-        var party = getParty(nameOfState, numbers)
-        if (party == 'GOP') {
-            return '#d6604d'
-        } else if (party == 'DEM') {
             return '#4393c3'
         } else {
             return '#f7f7f7'

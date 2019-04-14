@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
 <head>
     <!-- add stylesheets here-->
@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
+    <!-- Top header bar  --->
     <div  style="float: left; width:100%; display:inline;" class = "raisedbox">
         <ul class="w3-navbar w3-purple w3-wide w3-padding-left w3-padding-0 w3-card-8 ">
             <font color="white" font-family = "Impact, Charcoal, sans-serif">
@@ -40,16 +41,16 @@
     </div>
 
     <!-- Holds the left and right divs -->
-    <div class = "container " style = " width: 100%; clear:both;">
-        <div class="w3-left-align innerContainer w3-card-4" style="margin-bottom:20px">   <!-- Left Container -->
+    <div class = "container " style ="width: 100%; clear:both;">
+        <div class="innerContainer w3-card-4" style="margin-bottom:20px">   <!-- Left Container -->
             <h2 class="w3-margin-top  fontCustom w3-margin-bottom" id="head-title" style="margin-left:5%">Seats vs Popular Vote</h2>
             <div style="margin-left:3%; margin-bottom:30px">
                 Sort by:
-                <button onclick="sortByName()" class="w3-btn w3-purple w3-ripple">Name</button>
-                <button onclick="sortByGerry()"  class="w3-btn w3-purple w3-ripple">Gerrymandering</button>
-                <button onclick="sortByParty()"  class="w3-btn w3-purple w3-ripple">Party</button>
+                <button onclick="sortByName()" class="w3-btn w3-purple w3-ripple" id="nameButton">Name &darr;</button>
+                <button onclick="sortByGerry()"  class="w3-btn w3-purple w3-ripple" id="gerryButton">Gerrymandering &darr;</button>
+                <button onclick="sortByParty()"  class="w3-btn w3-purple w3-ripple" id="partyButton">Party &darr;</button>
             </div>
-            <svg class="gerry" height="2080px"></svg>
+            <svg class="gerry" width="380px" height="2080px"></svg>
         </div>
         <div class="innerContainer2" style="margin-bottom:20px;">  <!-- Right Container -->
             <svg class="states w3-card-4" width="80%" height="1000px" style="position:fixed"></svg>
@@ -62,6 +63,11 @@
         </div>
     </div>
 </body>
+
+<div class="footer" >
+    Last updated 4/11/2019 <br>
+    Election data from Politico and pictures from Congress.gov
+</div>
 <script src="js/gerry_graphs.js"></script>
 <script src="js/state_districts.js"></script>
 

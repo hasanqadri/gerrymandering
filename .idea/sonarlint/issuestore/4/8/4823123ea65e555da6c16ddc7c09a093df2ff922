@@ -1,8 +1,9 @@
 
-Rjavascript:S1854""6Remove this useless assignment to local variable "svg"(¤˜ıÙ
-kjavascript:S2814}"CRename "f" as this name is already used in declaration at line 122.(Ö˜÷‘ûÿÿÿÿ8ºüÄ—™-
-’javascript:S4165‹"iReview this useless assignment: "totalHeight" already holds the assigned value along all execution paths.(î­ıØûÿÿÿÿ8ºüÄ—™-
-Yjavascript:UnusedVariable""4Remove the declaration of the unused 'svg' variable.(¤˜ıÙ
-f'javascript:FunctionDefinitionInsideLoopy"'Define this function outside of a loop.(¾ä´úúÿÿÿÿ8ºüÄ—™-
-djavascript:S1854B"<Remove this useless assignment to local variable "currState"(‚å³›şÿÿÿÿ8©¥ãŞ-
-Xjavascript:S1656ù"/Remove or correct this useless self-assignment.(ÁûÂøÿÿÿÿ8ºüÄ—™-
+Yjavascript:UnusedVariable%"4Remove the declaration of the unused 'svg' variable.(¤˜ıÙ
+Xjavascript:S1656¬"/Remove or correct this useless self-assignment.(ÁûÂøÿÿÿÿ8ùø”Ù -
+Rjavascript:S1854%"6Remove this useless assignment to local variable "svg"(¤˜ıÙ
+’javascript:S4165Ñ"iReview this useless assignment: "totalHeight" already holds the assigned value along all execution paths.(î­ıØûÿÿÿÿ8ç¨§Ğ -
+djavascript:S1854J"<Remove this useless assignment to local variable "currState"(‚å³›şÿÿÿÿ8©¥ãŞ-
+sjavascript:S9307"Q"createInitialGrid" declared at line 99 expects 3 arguments, but 4 were provided.(ñ­™—8ƒïíÄ -
+g'javascript:FunctionDefinitionInsideLoop‰"'Define this function outside of a loop.(¾ä´úúÿÿÿÿ8ºüÄ—™-
+ljavascript:S2814"CRename "f" as this name is already used in declaration at line 138.(Ö˜÷‘ûÿÿÿÿ8ºüÄ—™-

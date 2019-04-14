@@ -29,6 +29,7 @@ var yMarginSpacing = 50;
  */
 function gerry_graphs() {
 //var margin = {top: 100, right: 275, bottom: 40, left: 275};
+    $("#nameButton").attr('class', 'w3-btn w3-black w3-ripple');
 
     var width = 960,
         height = 760;
@@ -108,7 +109,7 @@ function createInitialGrid(data, districts, raceData) {
 
         //X Scale
         //var x_axis = d3v4.scaleBand().rangeRoundBands([0, 150]);
-        var datas = ["-50", "-25", "0", "25", "50"];
+        var datas = ["-20", "-10", "0", "10", "20"];
 
         var xScale = d3v4.scaleBand()
             .domain(datas.map(function(entry){
@@ -127,10 +128,9 @@ function createInitialGrid(data, districts, raceData) {
             //Initial SVG container for each state
             var svgContainer = d3v4.select(".gerry").append('g').attr('class', data[x]['State']).attr("transform", "translate(" + (0) + "," +  0 + ")");  //Transform xMargin pixels to the right, no y manipulation
             var currState = data[x]['State']
-
             //Set up state text names
             svgContainer.append("text")
-                .attr("x", 130)
+                .attr("x", 160)
                 .attr("y", 0)
                 .attr("dy", "1em")
                 .attr('font-size', 15)
@@ -146,7 +146,7 @@ function createInitialGrid(data, districts, raceData) {
                 .style('fill', '#4575b4')
                 .attr('r', cRadius)
                 .attr('cx', function(d, i) {
-                    return 30 + 10* parseInt(i%5)
+                    return 60 + 10* parseInt(i%5)
                 })
                 .attr('cy', function (d, i) {
                     return 30 + 10 * parseInt(i/5)
@@ -157,21 +157,21 @@ function createInitialGrid(data, districts, raceData) {
                     var name = d[0].split('_').join(' ');
                     $( "#state-info" ).html('Representative: ' + raceData[name][d[1]]['Dem Candidate'] + '<br>District: ' +  d[1] + ' <br>Popular vote: ' + raceData[name][d[1]]['Dem Total']);
                     var url = getPic(d[1], raceData[name][d[1]]['Dem Candidate'])
+                    console.log(raceData[name][d[1]]['Dem Candidate'])
+                    console.log(url)
+
                     if (url != null) {
                         $( "#image-id" ).attr('src', url)
                     } else {
                         $( "#image-id" ).attr('src', 'http://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png')
                     }
                 })
-                .on("mouseout", function(d) {
-                    revertDistrictColor(d[0], d[1])
-                });
 
             //x_axis
-            svgContainer.append("g").attr('class', data[x]['State']).attr("transform", "translate(" + (80) + "," + 35+ ")").call(axis)
-
+            svgContainer.append("g").attr('class', data[x]['State']).attr("transform", "translate(" + (110) + "," + 35+ ")").call(axis)
+            //console.log((parseFloat(data[x]['Gop % of Votes']) + parseFloat(data[x]['Dem % of Votes']))/2)
             //vertical line over x_axis
-            var calculatedPercentage = data[x]['Gop % of Votes'] * 200;
+            var calculatedPercentage = (data[x]['Gop % of Votes']) * 300;
             svgContainer.append('g').append('line')
                 .attr('class', 'xAxis')
                 .attr("x1", 150)
@@ -180,14 +180,14 @@ function createInitialGrid(data, districts, raceData) {
                 .attr("y2", 185)
                 .attr('stroke', 'purple')
                 .attr('stroke-width', 2)
-                .attr("transform", "translate(" + (calculatedPercentage - 95) + "," + -140 + ")").call(axis);
+                .attr("transform", "translate(" + (calculatedPercentage - 115) + "," + -140 + ")").call(axis);
 
             //Red Dots
             svgContainer.append('g').selectAll('circle').data(data[x]['Districts']['Republicans']).enter().append('circle')
                 .style('fill', 'red')
                 .attr('r', cRadius)
                 .attr('cx', function (d, i) {
-                    return 250 + 10 * (parseInt(i%5))
+                    return 280 + 10 * (parseInt(i%5))
                 })
                 .attr('cy', function (d, i) {
                     return 30 + 10 * (parseInt(i/5))
@@ -206,11 +206,10 @@ function createInitialGrid(data, districts, raceData) {
                         $( "#image-id" ).attr('src', 'http://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png')
                     }
                 })
-                .on("mouseout", function(d) {
-                    revertDistrictColor(d[0], d[1])
-                });
 
             nameArray.push(data[x]['State'])
+            console.log(data[x]['State'])
+            console.log(Math.abs(parseFloat(data[x]['Gop % of Votes']) - parseFloat(data[x]['Gop % of Seats'])))
             gerryArray.push(Math.abs(parseFloat(data[x]['Gop % of Votes']) - parseFloat(data[x]['Gop % of Seats'])))
             partyArray.push(calculatedPercentage)
         }
@@ -228,7 +227,7 @@ function createInitialGrid(data, districts, raceData) {
  */
 function getPic(dist, name) {
     for (var x in picData) {
-        if (picData[x]['name'] == name && picData[x]['district'] == dist) {
+        if (picData[x]['name'] == name) {
             return picData[x]['url'];
         }
     }
@@ -241,6 +240,7 @@ function getPic(dist, name) {
  * @returns {Array}
  */
 function sortArray(arrays) {
+
     var arr = arrays;
     var retArr = []
     var highest = -1;
@@ -275,6 +275,16 @@ function initTransformation() {
  * Sorts the left grid by name
  */
 function sortByName() {
+
+    if ($("#nameButton").text().includes('↓')) {
+        $("#nameButton").text($("#nameButton").text().replace('↓', '↑'))
+    } else {
+        $("#nameButton").text($("#nameButton").text().replace('↑', '↓'))
+    }
+    $("#nameButton").attr('class', 'w3-btn w3-black w3-ripple');
+    $("#gerryButton").attr('class', 'w3-btn w3-purple w3-ripple');
+    $("#partyButton").attr('class', 'w3-btn w3-purple w3-ripple');
+
     var totalHeight = 0;
     if (nameBit) {
         for (var z = 0; z < nameArray.length; z++) {
@@ -299,6 +309,16 @@ function sortByName() {
  * Sorts left grid by extent of gerrymandering
  */
 function sortByGerry() {
+    if ($("#gerryButton").text().includes('↓')) {
+        $("#gerryButton").text($("#gerryButton").text().replace('↓', '↑'))
+    } else {
+        $("#gerryButton").text($("#gerryButton").text().replace('↑', '↓'))
+    }
+    $("#nameButton").attr('class', 'w3-btn w3-purple w3-ripple');
+    $("#gerryButton").attr('class', 'w3-btn w3-black w3-ripple');
+    $("#partyButton").attr('class', 'w3-btn w3-purple w3-ripple');
+
+
     var totalHeight = 0;
     if (gerryBit) {
         for (var z = 0; z < nameArray.length; z++) {
@@ -337,6 +357,15 @@ function sortByGerry() {
  * Sort left grid by party percent
  */
 function sortByParty() {
+    if ($("#partyButton").text().includes('↓')) {
+        $("#partyButton").text($("#partyButton").text().replace('↓', '↑'))
+    } else {
+        $("#partyButton").text($("#partyButton").text().replace('↑', '↓'))
+    }
+    $("#nameButton").attr('class', 'w3-btn w3-purple w3-ripple');
+    $("#gerryButton").attr('class', 'w3-btn w3-purple w3-ripple');
+    $("#partyButton").attr('class', 'w3-btn w3-black w3-ripple');
+
     var totalHeight = 0;
     if (partyBit) {
         for (var z = 0; z < nameArray.length; z++) {
@@ -366,3 +395,5 @@ function sortByParty() {
     }
     partyBit = !partyBit;
 }
+
+

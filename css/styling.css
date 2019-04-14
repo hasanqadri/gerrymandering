@@ -9,6 +9,17 @@ body {
     font-weight: 700;
 }
 
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: purple;
+    color: white;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
 circle {
     fill: white;
     stroke: black;
@@ -26,18 +37,14 @@ circle {
     top: 20px;
     margin-top: 40px;
     margin-left: 150px;
-    width: 450px;
     position:relative;
 }
 
 .innerContainer2 {
     top: 20px;
     margin-top: 40px;
-    width:90%;
     margin-left: 100px;
     position:relative;
-
-
 }
 
 /**Start of District Styling**/
